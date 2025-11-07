@@ -33,6 +33,7 @@ input:focus{
 
 }
 
+
 /* button custome css*/
 button,input[type="reset"],input[type="submit"],.button{
     border:none;
@@ -106,6 +107,21 @@ input[disabled]{
 }
 textarea {
     resize: none;
+}
+
+/* Error */
+
+
+.error{
+    color:red;
+    margin-top:2px;
+    padding: 4px 6px;
+    font-size:.9rem;
+    font-weight: 500;
+    display: none;
+}
+.error.active {
+  display: block;
 }
 
 /* Responsive Design */
