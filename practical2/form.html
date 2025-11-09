@@ -5,58 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
-    <link rel="stylesheet" href="./css/form.css">
-	<script src="./js/validation.js" ></script>
+    <link rel="stylesheet" href="../practical3/form.css">
+    <link rel="stylesheet" herf="../practical4/responsiveIndex.css">
+    <script src="../practical7/validation.js"></script>
+    <script src="../practical6/events.js"></script>
 </head>
 
 <body>
-    <form action="/" method="post" id="applicationForm">
+    <form id="applicationForm">
         <h2 class="title">Job Application Form</h2>
         <fieldset>
             <legend class="sub-title">Personal Details :</legend>
             <div>
                 <label for="fname">First Name : </label>
-                <input type="text" id="fname" name="fname" placeholder="first name" />
+                <input type="text" id="fname" name="fname" placeholder="first name" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)" onkeydown="handleKeyDown(event)" />
+                <div class="error" id="fname-error"></div>
             </div>
             <div>
                 <label for="lname">Last Name : </label>
-                <input type="text" id="lname" name="lname" placeholder="last name" />
+                <input type="text" id="lname" name="lname" placeholder="last name" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)" onkeydown="handleKeyDown(event)" />
+                <div class="error" id="lname-error"></div>
             </div>
 
             <div>
                 <label for="dob">DOB : </label>
-                <input type="date" id="dob" name="dob" max="2025-09-26"/>
+                <input type="date" id="dob" name="dob" max="2025-09-26" />
+                <div class="error" id="dob-error"></div>
             </div>
             <div>
                 <span for="gender">Gender : </span>
                 <label for="male"><input type="radio" value="male" name="gender" id="male" /> Male</label>
                 <label for="male"><input type="radio" value="female" name="gender" id="female" /> Female</label>
+                <div class="error" id="gender-error"></div>
             </div>
             <div>
                 <label for="marital">Marital Status : </label>
                 <label for="dob"><input type="radio" id="marital" name="marital" value="married" />married</label>
                 <label for="dob"><input type="radio" id="marital" name="marital" value="Unmarried" />Unmarried</label>
+                <div class="error" id="marital-error"></div>
             </div>
             <div>
                 <label for="nationality">Nationality : </label>
-                <input type="text" id="nationality" name="nationality" placeholder="nationality" />
+                <input type="text" id="nationality" name="nationality" placeholder="nationality"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)" />
+                <div class="error" id="nationality-error"></div>
             </div>
         </fieldset>
 
         <fieldset>
             <legend class="sub-title">Contact Details :</legend>
-            
-                <div>
-                    <label for="mobile">Mobile No : </label>
-                    <input type="text" id="mobile" name="mobile" placeholder="mobile number" />
-                </div>
-                <div>
-                    <label for="email">Email id : </label>
-                    <input type="email" id="email" name="email" placeholder="email" />
-                </div>
+
+            <div>
+                <label for="mobile">Mobile No : </label>
+                <input type="text" id="mobile" name="mobile" placeholder="mobile number" />
+                <div class="error" id="mobile-error"></div>
+            </div>
+            <div>
+                <label for="email">Email id : </label>
+                <input type="email" id="email" name="email" placeholder="email" />
+                <div class="error" id="email-error"></div>
+            </div>
             <div>
                 <label for="address">Address : </label>
-                <textarea rows="5" cols="40" placeholder="Address" id="address" name="address"></textarea>
+                <textarea rows="5" cols="40" placeholder="Address" id="address" name="address"
+                    onfocus="handleFormFocus(this)" 
+                    onblur="handleFormBlur(this)" 
+                    onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)"></textarea>
+                <div class="error" id="address-error"></div>
             </div>
         </fieldset>
 
@@ -64,13 +83,15 @@
             <legend class="sub-title">Educational Details :</legend>
             <div>
                 <label for="qualification">Select qualification</label>
-                <select id="qualification">
+                <select id="qualification" name="qualification" onmouseover="showMenu(this)"
+                    onmouseout="hideMenu(this)">
                     <option selected disabled>Education</option>
                     <option value="10">10th passed</option>
                     <option value="12">12th Passed</option>
                     <option value="graduation">Graduation</option>
                     <option value="postGraduation">Post-Graduation</option>
                 </select>
+                <div class="error" id="qualification-error"></div>
             </div>
             <div>
                 <span>Field Of Study : </span>
@@ -82,10 +103,14 @@
                     Commerce</label>
                 <label for="science"><input type="radio" name="fieldofstudy" id="science">
                     Science</label>
+                <div class="error" id="fieldofstudy-error"></div>
             </div>
             <div>
                 <label for="university-institution-name">University/Institution Name : </label>
-                <input type="text" name="universityinstitutionname" id="university-institution-name" />
+                <input type="text" name="universityinstitutionname" id="university-institution-name"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)" />
+                <div class="error" id="universityinstitutionname-error"></div>
             </div>
         </fieldset>
 
@@ -95,18 +120,22 @@
 
                 <label for="job-experience-year">Work Experience in Year</label>
                 <input type="number" name="experienceyear" id="job-experience-year" value="0" />
+                <div class="error" id="experienceyear-error"></div>
             </div>
             <div>
                 <label for="job-previous">Previous Job Titles : </label>
-                <input type="text" id="job-previous" name="previousjob" placeholder="company name" />
+                <input type="text" id="job-previous" name="previousjob" placeholder="job title" />
+                <div class="error" id="previousjob-error"></div>
             </div>
             <div>
                 <label for="job-company">Previous Company Name : </label>
                 <input type="text" id="job-company" name="company" placeholder="company name" />
+                <div class="error" id="company-error"></div>
             </div>
             <div>
                 <label for="job-Previous-salary">Previous Salary : </label>
-                <input type="number" name="previoussalary" id="job-previous-salary" min="0" placeholder="10000"/>
+                <input type="number" name="previoussalary" id="job-previous-salary" min="0" placeholder="10000" />
+                <div class="error" id="previoussalary-error"></div>
             </div>
             <div class="multi-value">
                 <span>Relevant Skill : </span>
@@ -122,6 +151,7 @@
                         value="dataanalysis">Data Analysis</label>
                 <label for="skill-customerservice"><input type="checkbox" id="skill-customerservice" name="skill"
                         value="customerservice">Customer Service</label>
+                <div class="error" id="skill-error"></div>
             </div>
         </fieldset>
 
@@ -136,6 +166,7 @@
                     <option value="marketingmanager">Marketing Manager</option>
                     <option value="seniordeveloper">Senior Developer</option>
                 </select>
+                <div class="error" id="jobposition-error"></div>
             </div>
             <div>
                 <label for="job-location">Location : </label>
@@ -146,23 +177,25 @@
                     <option value="delhi">Delhi</option>
                     <option value="mumbai">Mumbai</option>
                 </select>
+                <div class="error" id="joblocation-error"></div>
             </div>
             <div>
                 <label for="start-date">Available Start Date : </label>
-                <input type="date" name="startdate" id="start-date" min="2025-09-26"/>
+                <input type="date" name="startdate" id="start-date" min="2025-09-26" />
+                <div class="error" id="startdate-error"></div>
             </div>
             <div>
                 <label for="job-expected-salary">Expected Salary : </label>
                 <input type="number" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000" />
+                <div class="error" id="jobexpectedsalary-error"></div>
             </div>
         </fieldset>
         <div>
             <input type="submit" value="submit" class="success-button">
             <input type="reset" value="reset" class="danger-button">
-            <a class="secondary-button button"lass="form-link" href="./index.html">Home</a>
+            <a class="secondary-button button" lass="form-link" href="./index.html">Home</a>
         </div>
     </form>
-	
 </body>
 
 </html>
