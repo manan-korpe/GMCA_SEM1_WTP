@@ -1,8 +1,8 @@
 /* blobal css for form*/
 :root {
     --light-black: rgba(173, 173, 173, 0.838);
-    --primary:#7689de;
-    --secondary:#a9dce3;
+    --primary: #d9d9d9;
+    --secondary: #ffffff;
 }
 
 
@@ -18,6 +18,9 @@ body {
     justify-content: center;
     letter-spacing: .5px;
 }
+a{
+    text-decoration-line:none;
+}
 
 input,
 textarea,
@@ -28,6 +31,7 @@ select {
     border-radius: 4px;
     border: 1px solid var(--light-black);
 }
+
 /* input:focus{
     outline: 2px solid var(--primary);
 
@@ -35,31 +39,38 @@ select {
 
 
 /* button custome css*/
-button,input[type="reset"],input[type="submit"],.button{
-    border:none;
+button,
+input[type="reset"],
+input[type="submit"],
+.button {
+    border: none;
     border-radius: 4px;
-    padding:.6rem 2rem;
+    padding: .6rem 2rem;
     box-shadow: 0px 0px 4px rgb(186, 186, 186);
 }
+
 /*different types of button*/
-.success-button{
+.success-button {
     background-color: #038C4C;
-    color:white;
-}
-.secondary-button{
-    background-color: #704BBF;
-    color: white;
-}
-.danger-button{
-    background-color: #BF0436;
     color: white;
 }
 
-
+.danger-button {
+    background-color: #f3163f;
+    color: white;
+}
+.success-button:hover{
+    background-color: #02733e;
+}
+.danger-button:hover{
+    background-color: #db1338;
+}
 /* */
-h2{
+h2 {
     text-align: center;
+    margin-bottom: 2rem;
 }
+
 form {
     min-width: 60%;
     padding: 1rem 3rem 3rem 3rem;
@@ -71,15 +82,17 @@ form {
 }
 
 fieldset {
-    border: 1px solid  var(--primary);
+    border: 1px solid var(--primary);
     border-radius: 4px;
     padding: 2rem 2rem 1rem 2rem;
     margin-bottom: 2rem;
 }
-legend{
+
+legend {
     font-size: 18px;
-    font-weight:600;
+    font-weight: 600;
 }
+
 fieldset>div {
     /* border:1px solid black; */
     margin-bottom: 1.5rem;
@@ -92,19 +105,26 @@ span {
     margin-bottom: 8px
 }
 
-input[type="text"],input[type="email"], input[type="number"],select{
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
     padding: 12px;
-    min-width:50%;
+    min-width: 50%;
 }
-input[type="date"]{
+
+input[type="date"] {
     padding: 12px;
 }
-input[type="date"]{
+
+input[type="date"] {
     text-transform: uppercase;
 }
-input[disabled]{
-    color:var(--light-black);
+
+input[disabled] {
+    color: var(--light-black);
 }
+
 textarea {
     resize: none;
 }
@@ -112,14 +132,22 @@ textarea {
 /* Error */
 
 
-.error{
-    color:red;
-    margin-top:2px;
+.error {
+    color: red;
+    margin-top: 2px;
     padding: 4px 6px;
-    font-size:.9rem;
+    font-size: .9rem;
     font-weight: 500;
     display: none;
 }
+
 .error.active {
-  display: block;
+    display: block;
+}
+
+.btn-handler {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
 }

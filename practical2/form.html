@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link rel="stylesheet" href="../practical3/form.css">
-    <link rel="stylesheet" herf="../practical4/responsiveIndex.css">
+    <title>Job Application</title>
+    <link rel="stylesheet" href="../practical3/form.css" />
+    <link rel="stylesheet" href="../practical4/responsiveForm.css" />
     <script src="../practical7/validation.js"></script>
     <script src="../practical6/events.js"></script>
 </head>
@@ -60,20 +60,20 @@
 
             <div>
                 <label for="mobile">Mobile No : </label>
-                <input type="text" id="mobile" name="mobile" placeholder="mobile number" />
+                <input type="text" id="mobile" name="mobile" placeholder="mobile number" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" />
                 <div class="error" id="mobile-error"></div>
             </div>
             <div>
                 <label for="email">Email id : </label>
-                <input type="email" id="email" name="email" placeholder="email" />
+                <input type="email" id="email" name="email" placeholder="email" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" />
                 <div class="error" id="email-error"></div>
             </div>
             <div>
                 <label for="address">Address : </label>
                 <textarea rows="5" cols="40" placeholder="Address" id="address" name="address"
-                    onfocus="handleFormFocus(this)" 
-                    onblur="handleFormBlur(this)" 
-                    onkeypress="handleKeyPress(event)"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)"
                     onkeydown="handleKeyDown(event)"></textarea>
                 <div class="error" id="address-error"></div>
             </div>
@@ -119,22 +119,26 @@
             <div>
 
                 <label for="job-experience-year">Work Experience in Year</label>
-                <input type="number" name="experienceyear" id="job-experience-year" value="0" />
+                <input type="number" name="experienceyear" id="job-experience-year" value="0"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
                 <div class="error" id="experienceyear-error"></div>
             </div>
             <div>
                 <label for="job-previous">Previous Job Titles : </label>
-                <input type="text" id="job-previous" name="previousjob" placeholder="job title" />
+                <input type="text" id="job-previous" name="previousjob" placeholder="job title"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
                 <div class="error" id="previousjob-error"></div>
             </div>
             <div>
                 <label for="job-company">Previous Company Name : </label>
-                <input type="text" id="job-company" name="company" placeholder="company name" />
+                <input type="text" id="job-company" name="company" placeholder="company name"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
                 <div class="error" id="company-error"></div>
             </div>
             <div>
                 <label for="job-Previous-salary">Previous Salary : </label>
-                <input type="number" name="previoussalary" id="job-previous-salary" min="0" placeholder="10000" />
+                <input type="number" name="previoussalary" id="job-previous-salary" min="0" placeholder="10000"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
                 <div class="error" id="previoussalary-error"></div>
             </div>
             <div class="multi-value">
@@ -181,21 +185,29 @@
             </div>
             <div>
                 <label for="start-date">Available Start Date : </label>
-                <input type="date" name="startdate" id="start-date" min="2025-09-26" />
+                <input type="date" name="startdate" id="start-date" script="" />
                 <div class="error" id="startdate-error"></div>
             </div>
             <div>
                 <label for="job-expected-salary">Expected Salary : </label>
-                <input type="number" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000" />
+                <input type="number" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
                 <div class="error" id="jobexpectedsalary-error"></div>
             </div>
         </fieldset>
-        <div>
-            <input type="submit" value="submit" class="success-button">
-            <input type="reset" value="reset" class="danger-button">
-            <a class="secondary-button button" lass="form-link" href="./index.html">Home</a>
+        <div class="btn-handler">
+            <div>
+                <input type="submit" value="submit" class="success-button">
+                <input type="reset" value="reset" class="danger-button">
+            </div>
+            <a style="text-align:center" lass="form-link" href="../practical1/index.html">Home</a>
         </div>
     </form>
+    <script>
+        let todayDate = new Date().toISOString().split("T")[0];
+        document.getElementById("start-date").min = todayDate;
+        document.getElementById("dob").max = todayDate;
+    </script>
 </body>
 
 </html>
