@@ -1,0 +1,240 @@
+<?php
+require "../practical8/model/util/auth.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+    <link rel="stylesheet" href="../practical3/form.css" />
+    <link rel="stylesheet" href="../practical4/responsiveForm.css" />
+    <script src="../practical7/validation.js"></script>
+    <script src="../practical6/events.js"></script>
+</head>
+
+<body>
+    <form id="applicationForm" action="../practical8/model/form_submit_handler.php" method="POST" enctype="multipart/form-data">
+        <h2 class="title">Job Application Form</h2>
+        <fieldset>
+            <legend class="sub-title">Personal Details</legend>
+            <div>
+                <label for="fname">First Name </label>
+                <input type="text" id="fname" name="fname" placeholder="first name" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)" />
+                <div class="error" id="fname-error"></div>
+            </div>
+            <div>
+                <label for="lname">Last Name </label>
+                <input type="text" id="lname" name="lname" placeholder="last name" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)" />
+                <div class="error" id="lname-error"></div>
+            </div>
+
+            <div>
+                <label for="dob">DOB </label>
+                <input type="date" id="dob" name="dob" max="2025-09-26" />
+                <div class="error" id="dob-error"></div>
+            </div>
+            <div>
+                <span for="gender">Gender </span>
+                <label for="male"><input type="radio" value="male" name="gender" id="male" /> Male</label>
+                <label for="male"><input type="radio" value="female" name="gender" id="female" /> Female</label>
+                <div class="error" id="gender-error"></div>
+            </div>
+            <div>
+                <label for="marital">Marital Status </label>
+                <label for="dob"><input type="radio" id="marital" name="marital" value="married" />married</label>
+                <label for="dob"><input type="radio" id="marital" name="marital" value="Unmarried" />Unmarried</label>
+                <div class="error" id="marital-error"></div>
+            </div>
+            <div>
+                <label for="nationality">Nationality </label>
+                <select id="nationality" name="nationality">
+                    <option selected disabled value="">Nationality</option>
+                    <option value="india">India</option>
+                    <option value="USA">USA</option>
+                </select>
+                <div class="error" id="nationality-error"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="sub-title">Contact Details</legend>
+
+            <div>
+                <label for="mobile">Mobile No </label>
+                <input type="text" id="mobile" name="mobile" placeholder="mobile number" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" />
+                <div class="error" id="mobile-error"></div>
+            </div>
+            <div>
+                <label for="email">Email id </label>
+                <input type="email" id="email" name="email" placeholder="email" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" />
+                <div class="error" id="email-error"></div>
+            </div>
+            <div>
+                <label for="address">Address </label>
+                <textarea rows="5" cols="40" placeholder="Address" id="address" name="address"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)"></textarea>
+                <div class="error" id="address-error"></div>
+            </div>
+            <div>
+                <label for="pincode">Pin Code </label>
+                <input type="text" name="pincode" id="pincode" onfocus="handleFormFocus(this)"
+                    onblur="handleFormBlur(this)" />
+                <div class="error" id="pincode-error"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="sub-title">Educational Details</legend>
+            <div>
+                <label for="qualification">Select qualification</label>
+                <select id="qualification" name="qualification">
+                    <option selected disabled value="">Education</option>
+                    <option value="10">10th passed</option>
+                    <option value="12">12th Passed</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="postGraduation">Post-Graduation</option>
+                </select>
+                <div class="error" id="qualification-error"></div>
+            </div>
+            <div>
+                <span>Field Of Study </span>
+                <label for="arts">
+                    <input type="radio" name="fieldofstudy" id="arts" value="arts">
+                    Arts
+                </label>
+                <label for="commerce"><input type="radio" name="fieldofstudy" value="commerce" id="commerce">
+                    Commerce</label>
+                <label for="science"><input type="radio" name="fieldofstudy" value="science" id="science">
+                    Science</label>
+                <div class="error" id="fieldofstudy-error"></div>
+            </div>
+            <div>
+                <label for="university-institution-name">University/Institution Name </label>
+                <input type="text" name="universityinstitutionname" id="university-institution-name"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" onkeypress="handleKeyPress(event)"
+                    onkeydown="handleKeyDown(event)" />
+                <div class="error" id="universityinstitutionname-error"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="sub-title">Work Experience</legend>
+            <input type="hidden" id="ExperienceOpen" value="false"/>
+            <div>
+                <input type="radio" value="fresher" name="experience" id="fresher" checked> Fresher
+                <input type="radio" value="experienced" name="experience" id="experienced"> Experience
+            </div>
+            <div class="error" id="experience-error"></div>
+            <div class="hidden-experience" id="hidden-experience">
+                <div>
+
+                    <label for="job-experience-year">Work Experience in Year</label>
+                    <input type="number" name="experienceyear" id="job-experience-year" />
+                    <div class="error" id="experienceyear-error"></div>
+                </div>
+                <div>
+                    <label for="job-previous">Previous Job Titles </label>
+                    <input type="text" id="job-previous" name="previousjob" placeholder="job title"
+                        onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
+                    <div class="error" id="previousjob-error"></div>
+                </div>
+                <div>
+                    <label for="job-company">Previous Company Name </label>
+                    <input type="text" id="job-company" name="company" placeholder="company name"
+                        onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
+                    <div class="error" id="company-error"></div>
+                </div>
+                <div>
+                    <label for="job-Previous-salary">Previous Salary </label>
+                    <input type="text" name="previoussalary" id="job-previous-salary" placeholder="previous salary"
+                        onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
+                    <div class="error" id="previoussalary-error"></div>
+                </div>
+                <div class="multi-value">
+                    <span>Relevant Skill</span>
+                    <label for="skill-communication"><input type="checkbox" id="skill-communication" name="skill"
+                            value="communication">Communication</label>
+                    <label for="skill-problemsolving"><input type="checkbox" id="skill-problemsolving" name="skill"
+                            value="problemsolving">Problem Solving</label>
+                    <label for="skill-leadership"><input type="checkbox" id="skill-leadership" name="skill"
+                            value="leadership">leadership</label>
+                    <label for="skill-timemanagement"><input type="checkbox" id="skill-timemanagement" name="skill"
+                            value="timemanagement">Time Management</label>
+                    <label for="skill-dataanalysis"><input type="checkbox" id="skill-dataanalysis" name="skill"
+                            value="dataanalysis">Data Analysis</label>
+                    <label for="skill-customerservice"><input type="checkbox" id="skill-customerservice" name="skill"
+                            value="customerservice">Customer Service</label>
+                    <div class="error" id="skill-error"></div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="sub-title">Job-Related Details</legend>
+            <div>
+                <label for="job-position">Position Applying For </label>
+                <select name="jobposition" id="job-position" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+                    <option selected disabled value="">Position</option>
+                    <option value="preojectmanager">Preoject Manager</option>
+                    <option value="businessanalyst">Business Analyst</option>
+                    <option value="marketingmanager">Marketing Manager</option>
+                    <option value="seniordeveloper">Senior Developer</option>
+                </select>
+                <div class="error" id="jobposition-error"></div>
+            </div>
+            <div>
+                <label for="job-location">Preferred Location </label>
+                <select name="joblocation" id="job-location">
+                    <option selected disabled value="">Location</option>
+                    <option value="ahmedabad">Ahmedabad</option>
+                    <option value="pune">Pune</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="mumbai">Mumbai</option>
+                </select>
+                <div class="error" id="joblocation-error"></div>
+            </div>
+            <div>
+                <label for="start-date">Available Start Date : </label>
+                <input type="date" name="startdate" id="start-date" script="" />
+                <div class="error" id="startdate-error"></div>
+            </div>
+            <div>
+                <label for="job-expected-salary">Expected Salary : </label>
+                <input type="text" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000"
+                    onfocus="handleFormFocus(this)" onblur="handleFormBlur(this)" />
+                <div class="error" id="jobexpectedsalary-error"></div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="sub-title">Upload Documents</legend>
+            <div>
+                <label for="resume">Upload Resume (PDF only) </label>
+                <input type="file" id="resume" name="resume" accept=".pdf">
+                <div class="error" id="resume-error"></div>
+            </div>
+            <div>
+                <label for="photo">Upload Passport Size Photo </label>
+                <input type="file" id="photo" name="photo" accept="image/*">
+                <div class="error" id="photo-error"></div>
+            </div>
+        </fieldset>
+        <div class="btn-handler">
+            <div>
+                <input type="submit" value="submit" class="success-button">
+                <input type="reset" onclick="removeError()" value="reset" class="danger-button">
+            </div>
+            <a style="text-align:center" lass="form-link" href="../practical1/index.php">Home</a>
+        </div>
+        <div id="toast" class="toast">Form submitted successfully!</div>
+    </form>
+</body>
+
+</html>

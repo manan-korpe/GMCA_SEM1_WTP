@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="left">
+        <form ng-submit="submitLogin(loginForm)" name="loginForm" id="loginForm" novalidate>
+            <h2>Login</h2>
+            <div class="input-form">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="user.email" ng-required="true" />
+                    <div class="error" ng-show="registerform.email.$touched && registerform.email.$invalid">
+                        {{getEmailError()}}
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="password" ng-model="user.password"
+                        ng-required="true" ng-minlength="6" />
+                    <div class="error" ng-show="registerform.password.$touched && registerform.password.$invalid">
+                        {{getPasswordError()}}
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn" ng-disabled="registerform.$invalid">Login</button>
+
+            <p class="register-text">
+                Don’t have an account? <a href="#!/register">Register</a>
+            </p>
+        </form>
+    </div>
+
+    <div class="right">
+        <div class="shape shape-a"></div>
+        <div class="shape shape-b"></div>
+        <div class="shape shape-c"></div>
+        <div class="shape shape-d"></div>
+        <div class="shape shape-e"></div>
+        <div class="shape shape-f"></div>
+    </div>
+</div>
+<div class="toast-container" id="toastContainer"></div>

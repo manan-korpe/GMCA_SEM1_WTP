@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <!-- style -->
+    <link ng-repeat="cssFile in pageCSS" ng-href="{{cssFile}}" rel="stylesheet">
+    <link rel="stylesheet" href="css/toast.css">
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <!-- module -->
+    <script src="app.js"></script>
+    <script src="service/auth.js"></script>
+    <script src="service/toast.js"></script>
+    <!-- controller -->
+    <script src="controller/auth.js"></script>
+    <script src="controller/home.js"></script>
+    <script src="controller/jobForm.js"></script>
+    <script src="controller/calculator.js"></script>
+</head>
+
+<body ng-view>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<?php
+// require "../practical8/php/auth.php";
+session_start();
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to Manan Webpage</title>
+    <link rel="stylesheet" href="../practical3/index.css">
+    <link rel="stylesheet" herf="../practical4/responsiveIndex.css">
+</head>
+
+<body>
+    <table width="100%" bgColor="orange">
+        <tr align="center">
+            <td width="20%" class="imgset">
+                <div>
+
+                    <img src="./college.jpg" alt="Image" width="100%">
+                </div>
+                <div>
+
+                    <img src="./User.jpeg" alt="Image" width="100%">
+                </div>
+                <div>
+
+                    <img src="./rahul.jpg" alt="Image" width="100%">
+                </div>
+                <div>
+
+                    <img src="./arun.jpg" alt="Image" width="100%">
+                </div>
+            </td>
+            <td width="80%" align="center">
+                <h1 bgColor="orange">Welcome to Government MCA College, Maninagar</h1>
+                <h3>GROUP NO : 17</h3>
+
+            </td>
+        </tr>
+    </table>
+    <table width="100%" bgColor="grey">
+        <tr align="center">
+            <td>
+                <p><a href="#">Home</a> | <a href="#">About Us</a> | <a href="#">Services</a> | <a href="#">Contact</a>
+                    <!-- | <a href="../practical2/form.php">Job Application</a>  -->
+                    <?php
+                        if (isset($_SESSION['user_id'])) {
+                            echo '| <a href="../practical8/view/jobList.php">Jobs</a>';
+                            echo ' | <a href="../practical5/calculator.php">Calculator</a>';
+                             echo ' | <a href="../practical8/model/logout.php">Logout</a>';
+                        }else{
+                            echo ' | <a href="../practical8/view/login.php">Login</a>';
+                        }
+                    ?>
+                    
+
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td width="300" valign="top">
+                <h3>Latest News:</h3>
+                <ol>
+                    <li>New Admissions 2024</li>
+                    <li>Annual Cultural Event from <br> <b> 30 Sept to 5 Oct 2024</b></li>
+                    <li>Seminar on AI - 15th Oct</li>
+                </ol>
+            </td>
+            <td valign="top">
+                <h3>About Our Institute</h3>
+                <p>At Government MCA College, Maninagar, we provide high-quality education in the field of Computer
+                    Applications. Our experienced faculties, and Principal Dr. Chetan B. Bhatt, are dedicated to
+                    imparting practical and theoretical knowledge.
+                </p>
+                <h3>Our Mission</h3>
+                <p>We aim to produce professionals who excel in their respective fields. With state-of-the-art
+                    infrastructure and innovative teaching methods, we strive for academic excellence.</p>
+                <br />
+                <form align="left">
+
+                    <h3>Contact Us</h3>
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name"><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+                    <button>Submit</button>
+                </form>
+            </td>
+            <td width="200" valign="top">
+                <h3>Important Links:</h3>
+                <ul>
+                    <li><a href="#">NPTEL</a></li>
+                    <li><a href="#">UGC</a></li>
+                    <li><a href="#">AICTE</a></li>
+                </ul>
+            </td>
+        </tr>
+        <table>
+            <tr>
+                <td width="100%" bgcolor="green" align="center" valign="bottom">
+
+                    <p>&copy; 2025 Government MCA College, Maninagar. All
+                        Rights Reserved.</p>
+                </td>
+            </tr>
+        </table>
+    </table>
+</body>
+
+</html>

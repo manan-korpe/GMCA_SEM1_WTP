@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Toast Stack</title>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f5f5;
+        padding: 40px;
+    }
+
+    /* Toast Container */
+    .toast-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 9999;
+    }
+
+    .toast {
+        width: 300px;
+        padding: 16px 20px;
+        border-radius: 6px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        font-size: 1rem;
+        font-weight: 600;
+        color: #525252;
+        opacity: 0;
+        animation: slideDown .4s forwards;
+    }
+
+    .toast p {
+        margin: 0 0 6px;
+        font-size: 1.1rem;
+    }
+
+    .success { border-left: 6px solid #1f9d34; }
+    .warning { border-left: 6px solid #ff9800; }
+    .error   { border-left: 6px solid #e00000; }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-15px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<button onclick="showToast('error','Something went wrong')">Error</button>
+<button onclick="showToast('success','Operation successful!')">Success</button>
+<button onclick="showToast('warning','Please check again')">Warning</button>
+
+<script>
+function showToast(type, message) {
+    const container = document.getElementById("toastContainer");
+
+    // Create new toast
+    const toast = document.createElement("div");
+    toast.className = "toast " + type;
+
+    toast.innerHTML = `
+        <p>${type}</p>
+        <span>${message}</span>
+    `;
+
+    // Add new toast at top
+    container.prepend(toast);
+
+    // Remove toast after 3 seconds
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(-15px)";
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+</script>
+
+</body>
+</html>

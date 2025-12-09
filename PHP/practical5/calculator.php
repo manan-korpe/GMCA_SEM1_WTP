@@ -1,0 +1,56 @@
+<?php
+require "../practical8/model/util/auth.php";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="./calculator.css" />
+</head>
+
+<body>
+    <form>
+        <input type="text" name="user-input" id="user-input" disabled />
+
+        <table id="user-input-table">
+            <tr>
+                <td class="special-char">CI</td>
+                <td class="special-char">+/-</td>
+                <td class="special-char">%</td>
+                <td class="special-char">/</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td class="special-char">*</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td class="special-char">-</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td rowspan="2" class="special-char">+</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td class="special-char">.</td>
+                <td class="special-char">=</td>
+                <!-- <td></td> -->
+            </tr>
+
+        </table>
+    </form>
+    <a class="home-page" href="../practical1/index.php">HOME</a>
+    <script src="./calculator.js"></script>
+</body>
+
+</html>

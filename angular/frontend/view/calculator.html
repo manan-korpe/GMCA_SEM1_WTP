@@ -1,0 +1,36 @@
+<a class="redire-btn" href="#!/">HOME</a>
+<div class="container" ng-controller="calculatorController">
+    <input type="text" ng-model="currentInput" disabled />
+
+    <table>
+        <tr>
+            <td ng-click="handleInput('CI')">CI</td>
+            <td ng-click="handleInput('+/-')">+/-</td>
+            <td ng-click="handleInput('%')">%</td>
+            <td ng-click="handleInput('/')">/</td>
+        </tr>
+        <tr>
+            <td ng-click="handleInput('7')">7</td>
+            <td ng-click="handleInput('8')">8</td>
+            <td ng-click="handleInput('9')">9</td>
+            <td ng-click="handleInput('*')">*</td>
+        </tr>
+        <tr>
+            <td ng-click="handleInput('4')">4</td>
+            <td ng-click="handleInput('5')">5</td>
+            <td ng-click="handleInput('6')">6</td>
+            <td ng-click="handleInput('-')">-</td>
+        </tr>
+        <tr>
+            <td ng-click="handleInput('1')">1</td>
+            <td ng-click="handleInput('2')">2</td>
+            <td ng-click="handleInput('3')">3</td>
+            <td rowspan="2" ng-click="handleInput('+')">+</td>
+        </tr>
+        <tr>
+            <td ng-click="handleInput('0')">0</td>
+            <td ng-click="handleInput('.')">.</td>
+            <td ng-click="handleInput('=')">=</td>
+        </tr>
+    </table>
+</div>

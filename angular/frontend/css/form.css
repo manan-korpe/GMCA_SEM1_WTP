@@ -1,0 +1,179 @@
+/* blobal css for form*/
+:root {
+    --light-black: rgba(173, 173, 173, 0.838);
+    --primary: rgb(255, 165, 0);
+    /* --primary: rgb(0, 0, 0); */
+    --secondary: #ffffff;
+    --legend-Primary: #fbfbfb;
+    --legend-Primary-dark: #f6f6f6;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--primary);
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: .5px;
+}
+
+a {
+    text-decoration-line: none;
+}
+
+input,
+textarea,
+select {
+    text-transform: capitalize;
+    letter-spacing: .5px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--light-black);
+}
+
+/* button custome css*/
+button,
+input[type="reset"],
+input[type="submit"],
+.button {
+    border: none;
+    border-radius: 4px;
+    padding: .6rem 2rem;
+    box-shadow: 0px 0px 4px rgb(186, 186, 186);
+}
+
+/*different types of button*/
+.success-button {
+    background-color: #038C4C;
+    color: white;
+}
+
+.danger-button {
+    background-color: #f3163f;
+    color: white;
+}
+
+.success-button:hover {
+    background-color: #02733e;
+}
+
+.danger-button:hover {
+    background-color: #db1338;
+}
+
+/* */
+h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+form {
+    min-width: 60%;
+    padding: 1rem 3rem 3rem 3rem;
+    margin: 2rem;
+    background-color: var(--secondary);
+    letter-spacing: .5px;
+    box-shadow: 0px 0px 8px var(--light-black);
+    border-radius: 8px;
+}
+
+fieldset {
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 2rem 2rem 1rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--legend-Primary);
+}
+fieldset:hover {
+    background-color: var(--legend-Primary-dark);
+}
+
+legend {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--secondary);
+}
+
+fieldset>div , .hidden-experience>div{
+    /* border:1px solid black; */
+    margin-bottom: 1.5rem;
+}
+
+label,
+span {
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 8px
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+    padding: 10px;
+    min-width: 50%;
+}
+
+input[type="date"] {
+    padding: 12px;
+}
+
+input[type="date"] {
+    text-transform: uppercase;
+}
+
+input[disabled] {
+    color: var(--light-black);
+}
+
+textarea {
+    resize: none;
+}
+
+.hidden-experience{
+    display: none;
+}
+
+/* Error */
+
+
+.error {
+    color: red;
+    margin-top: 2px;
+    padding: 4px 6px;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+
+.btn-handler {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+/* toast message  */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .3s, transform .3s;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
