@@ -1,0 +1,169 @@
+:root {
+    --dark-black: #3c3c3c;
+    --light-black: #828282;
+    --primary: #ffa500;
+    --secondary: #ffbe45;
+    --bg-light: #eeeeee;
+}
+
+body {
+    color: var(--dark-black);
+    background-color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    letter-spacing: .8px;
+}
+
+.about-title {
+    padding: 2rem 2rem;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.about-title h1 {
+    margin-bottom: 1rem;
+}
+
+.about-title p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--light-black);
+}
+
+.sec2 {
+    padding:2rem;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    width: 160px;
+    padding: 1.2rem;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.feature-card span {
+    font-size: 0.85rem;
+    color: var(--light-black);
+}
+
+.college-img {
+    width: 50%;
+    margin: 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.college-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-extra {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.about-extra h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-extra-desc {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--light-black);
+}
+
+.extra-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.extra-card {
+    width: 300px;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.extra-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.extra-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.extra-card h3 {
+    margin-bottom: 0.8rem;
+}
+
+.extra-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--light-black);
+}
+
+@media (max-width: 992px) {
+    .college-img {
+        width: 100%;
+    }
+
+    .features {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-title,
+    .about-extra {
+        padding: 3rem 1.5rem;
+    }
+
+    .about-title p,
+    .about-content p,
+    .about-extra-desc {
+        font-size: 1rem;
+    }
+
+    .feature-card,
+    .extra-card {
+        width: 100%;
+        max-width: 320px;
+    }
+}

@@ -13,8 +13,10 @@
                         <input type="text" name="firstname" ng-model="user.firstname" ng-required="true"
                             ng-minlength="3" no-numbers />
 
-                        <div class="error" ng-show="registerform.firstname.$touched && registerform.firstname.$invalid">
-                            {{getFirstNameError()}}
+                        <div class="error" ng-show="registerform.firstname.$touched || jobForm.$submitted && registerform.firstname.$invalid">
+                            <span ng-show="registerform.firstname.$error.required">First Name is required</span>
+                            <span ng-show="registerform.firstname.$error.minlength">First Name must be at least 3
+                                characters</span>
                         </div>
                     </div>
 
@@ -23,8 +25,10 @@
                         <label>Last Name</label>
                         <input type="text" name="lastname" ng-model="user.lastname" ng-required="true" ng-minlength="3"
                             no-numbers />
-                        <div class="error" ng-show="registerform.lastname.$touched && registerform.lastname.$invalid">
-                            {{getLastNameError()}}
+                        <div class="error" ng-show="registerform.lastname.$touched || jobForm.$submitted && registerform.lastname.$invalid">
+                            <span ng-show="registerform.lastname.$error.required">last Name is required</span>
+                            <span ng-show="registerform.lastname.$error.minlength">last Name must be at least 3
+                                characters</span>
                         </div>
                     </div>
 
@@ -34,8 +38,9 @@
                 <div class="input-group">
                     <label>Email</label>
                     <input type="email" name="email" ng-model="user.email" ng-required="true" />
-                    <div class="error" ng-show="registerform.email.$touched && registerform.email.$invalid">
-                        {{getEmailError()}}
+                    <div class="error" ng-show="registerform.email.$touched || jobForm.$submitted && registerform.email.$invalid">
+                        <span ng-show="registerform.email.$error.required">Email is required</span>
+                        <span ng-show="registerform.email.$error.email">Enter Valid Email</span>
                     </div>
                 </div>
 
@@ -43,18 +48,27 @@
                 <div class="input-group">
                     <label>Password</label>
                     <input type="password" name="password" id="password" ng-model="user.password" ng-required="true"
-                        ng-minlength="6" />
-                    <div class="error" ng-show="registerform.password.$touched && registerform.password.$invalid">
-                        {{getPasswordError()}}
+                        ng-minlength="4" />
+                    <div class="error" ng-show="registerform.password.$touched || jobForm.$submitted && registerform.password.$invalid">
+                        <span ng-show="registerform.password.$error.required">password is required</span>
+                        <span ng-show="registerform.password.$error.minlength">Last Name must be at least 4
+                            characters</span>
                     </div>
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="input-group">
                     <label>Confirm Password</label>
-                    <input type="password" name="confirmpassword" id="confirmpassword" ng-model="user.confirmpassword" ng-required="true" />
-                    <div class="error" ng-show="registerform.confirmpassword.$touched">
-                        {{getConfirmPasswordError()}}
+                    <input type="password" name="confirmpassword" id="confirmpassword" ng-model="user.confirmpassword"
+                        ng-required="true" match-password="user.password" ng-minlength="4"/>
+                    <div class="error" ng-show="registerform.confirmpassword.$touched && registerform.confirmpassword.$invalid">
+                        <span ng-show="registerform.confirmpassword.$error.required">Confirm Password is required</span>
+                        <span ng-show="registerform.confirmpassword.$error.minlength">last Name must be at least 4
+                            characters</span>
+                        <span ng-show="!registerform.confirmpassword.$error.required && !registerform.confirmpassword.$error.minlength && registerform.confirmpassword.$error.matchPassword">
+                            Password and Confirm Password must be same
+                        </span>
+
                     </div>
                 </div>
 
@@ -80,4 +94,4 @@
         <div class="shape shape-f"></div>
     </div>
 </div>
- <div class="toast-container" id="toastContainer"></div>
+<div class="toast-container" id="toastContainer"></div>

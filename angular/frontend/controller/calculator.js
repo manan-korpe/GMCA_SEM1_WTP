@@ -1,7 +1,5 @@
 app.controller("calculatorController", function ($scope) {
-
     $scope.currentInput = "0";
-    // ---------- CALCULATE ----------
     $scope.calculate = function () {
         try {
             const expression = $scope.currentInput.replace(/%/g, "/100");
@@ -44,7 +42,6 @@ app.controller("calculatorController", function ($scope) {
         }
     };
 
-    // ---------- KEYBOARD SUPPORT ----------
     document.addEventListener("keydown", (event) => {
         const key = event.key;
         const validKeys = ["+", "-", "*", "/", "%", ".", "(", ")"];
@@ -60,7 +57,7 @@ app.controller("calculatorController", function ($scope) {
                         ? $scope.currentInput.slice(0, -1)
                         : "0";
             });
-        }else if (key.toLowerCase() === "c") {
+        }else if (key?.toLowerCase() === "c") {
             $scope.$apply(() => $scope.handleInput("C"));
         }
     });

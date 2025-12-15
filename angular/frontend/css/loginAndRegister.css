@@ -4,13 +4,6 @@
     --secondary: rgb(255, 190, 69);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
     height: 100vh;
     display: flex;

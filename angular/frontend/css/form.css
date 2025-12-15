@@ -2,7 +2,6 @@
 :root {
     --light-black: rgba(173, 173, 173, 0.838);
     --primary: rgb(255, 165, 0);
-    /* --primary: rgb(0, 0, 0); */
     --secondary: #ffffff;
     --legend-Primary: #fbfbfb;
     --legend-Primary-dark: #f6f6f6;
@@ -10,10 +9,7 @@
 
 
 body {
-    font-family: Arial, sans-serif;
     background-color: var(--primary);
-    margin: 0;
-    padding: 0;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -29,7 +25,6 @@ a {
 input,
 textarea,
 select {
-    text-transform: capitalize;
     letter-spacing: .5px;
     font-size: 16px;
     border-radius: 4px;
@@ -136,11 +131,6 @@ input[disabled] {
 textarea {
     resize: none;
 }
-
-.hidden-experience{
-    display: none;
-}
-
 /* Error */
 
 
@@ -160,20 +150,3 @@ textarea {
     row-gap: 10px;
 }
 
-/* toast message  */
-.toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #4caf50;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 6px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .3s, transform .3s;
-}
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}

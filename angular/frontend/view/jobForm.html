@@ -1,57 +1,59 @@
-<form id="jobApplication" ng-submit="submitApplication()" name="jobForm" enctype="multipart/form-data" novalidate>
+<form id="jobApplication" ng-submit="submitApplication(jobForm)" name="jobForm" enctype="multipart/form-data" focus-invalid novalidate>
     <h2 class="title">Job Application</h2>
     <fieldset>
         <legend class="sub-title">Personal Details</legend>
         <div>
             <label for="fname">First Name </label>
-            <input type="text" id="fname" name="fname" ng-model="jobApplication.fname" ng-required="true"
-                ng-minlength="3" />
-            <div class="error" ng-show="jobForm.fname.$touched && jobForm.fname.$invalid">
-                {{ getError(jobForm.fname, [{name:'isEmpty'}, {name:'minLength', length:3}]) }}
+            <input type="text" id="fname" name="fname" placeholder="first name" ng-model="jobApplication.fname" required ng-minlength="3" />
+            <div class="error" ng-show="jobForm.fname.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.fname.$error.required">First Name is required</span>
+                <span ng-show="jobForm.fname.$error.minlength">First Name must be at least 3 characters</span>
             </div>
         </div>
         <div>
             <label for="lname">Last Name </label>
             <input type="text" id="lname" name="lname" placeholder="last name" ng-model="jobApplication.lname"
-                ng-required="true" ng-minlength="3" />
-            <div class="error" ng-show="jobForm.lname.$touched && jobForm.lname.$invalid">
-                {{ getError(jobForm.lname, [{name:'isEmpty'}, {name:'minLength', length:3}]) }}
+                required ng-minlength="3" />
+            <div class="error" ng-show="jobForm.lname.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.lname.$error.required">Last Name is required</span>
+                <span ng-show="jobForm.lname.$error.minlength">Last Name must be at least 3 characters</span>
             </div>
         </div>
 
         <div>
             <label for="dob">DOB </label>
-            <input type="date" id="dob" name="dob" max="2025-09-26" ng-model="jobApplication.dob" ng-required="true" />
-            <div class="error" ng-show="jobForm.dob.$touched && jobForm.dob.$invalid">
-                {{ getError(jobForm.dob, [{name:'isEmpty'}]) }}
+            <input type="date" id="dob" name="dob" max="2025-09-26" ng-model="jobApplication.dob" required />
+            <div class="error" ng-show="jobForm.dob.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.dob.$error.required">Date of Birth is required</span>
             </div>
         </div>
         <div>
             <span for="gender">Gender </span>
             <label for="male"><input type="radio" value="male" name="gender" ng-model="jobApplication.gender"
-                    ng-required="true" /> Male</label>
+                    required/> Male</label>
             <label for="female"><input type="radio" value="female" name="gender" ng-model="jobApplication.gender"
-                    ng-required="true" /> Female</label>
-            <div class="error" ng-show="jobForm.gender.$dirty && jobForm.gender.$invalid">
-                {{ getError(jobForm.gender, [{name:'isEmpty'}]) }}
+                    required /> Female</label>
+            <div class="error" ng-show="jobForm.gender.$dirty">
+                <span ng-show="jobForm.gender.$error.required">gender is required</span>
             </div>
         </div>
         <div>
             <label for="marital">Marital Status </label>
-            <label for="dob"><input type="radio" id="marital" name="marital" value="married" />married</label>
-            <label for="dob"><input type="radio" id="marital" name="marital" value="Unmarried" />Unmarried</label>
-            <div class="error" id="marital-error"></div>
+            <label for="marital"><input type="radio" id="marital" name="marital" value="married" />married</label>
+            <label for="marital"><input type="radio" id="marital" name="marital" value="Unmarried" />Unmarried</label>
+            <div class="error" id="marital-error" ng-show="jobForm.marital.$dirty">
+                <span ng-show="jobForm.marital.$error.required">marital status is required</span>
+            </div>
         </div>
         <div>
             <label for="nationality">Nationality </label>
-            <select id="nationality" name="nationality" ng-model="jobApplication.nationality" ng-required="true">
+            <select id="nationality" name="nationality" ng-model="jobApplication.nationality" required>
                 <option selected disabled value="">Nationality</option>
                 <option value="india">India</option>
                 <option value="USA">USA</option>
             </select>
-            <div class="error" id="nationality-error"
-                ng-show="jobForm.nationality.$touched && jobForm.nationality.$invalid">
-                {{ getError(jobForm.nationality, [{name:'isEmpty'}]) }}
+            <div class="error" id="nationality-error" ng-show="jobForm.nationality.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.nationality.$error.required">nationality is required</span>
             </div>
         </div>
     </fieldset>
@@ -62,33 +64,37 @@
         <div>
             <label for="mobile">Mobile No </label>
             <input type="text" id="mobile" name="mobile" placeholder="mobile number" ng-model="jobApplication.mobile"
-                ng-required="true" ng-minlength="10" ng-pattern="/^\+?[1-9]\d{1,14}$/" />
-            <div class="error" id="mobile-error" ng-show="jobForm.mobile.$touched && jobForm.mobile.$invalid">
-                {{ getError(jobForm.mobile, [{name:'isEmpty'},{name:'isPhoneNumber'}]) }}
+                required ng-minlength="10" ng-pattern="/^\+?[1-9]\d{1,14}$/" />
+             <div class="error" id="mobile-error" ng-show="jobForm.mobile.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.mobile.$error.required">mobile Number is required</span>
+                <span ng-show="jobForm.mobile.$error.pattern || jobForm.mobile.$error.minlength">Enter Valid mobile Number </span>
             </div>
         </div>
         <div>
             <label for="email">Email id </label>
             <input type="email" id="email" name="email" placeholder="email" ng-model="jobApplication.email"
-                ng-required="true" />
-            <div class="error" id="email-error" ng-show="jobForm.email.$touched && jobForm.email.$invalid">
-                {{ getError(jobForm.email, [{name:'isEmpty'},{name:'isEmail'}]) }}
+                required />
+            <div class="error" id="email-error" ng-show="jobForm.email.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.email.$error.required">email is required</span>
+                <span ng-show="jobForm.email.$error.email">Enter Valid Email</span>
             </div>
         </div>
         <div>
             <label for="address">Address </label>
             <textarea rows="5" cols="40" placeholder="Address" id="address" name="address"
-                ng-model="jobApplication.address" ng-required="true" ng-minlength="5"></textarea>
-            <div class="error" id="address-error" ng-show="jobForm.address.$touched && jobForm.address.$invalid">
-                {{ getError(jobForm.address, [{name:'isEmpty'}, {name:'minLength', length:3}]) }}
+                ng-model="jobApplication.address" required ng-minlength="5"></textarea>
+            <div class="error" id="address-error" ng-show="jobForm.address.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.address.$error.required">Address is required</span>
+                <span ng-show="jobForm.address.$error.minlength">Enter Valid Address</span>
             </div>
         </div>
         </div>
         <div>
             <label for="pincode">Pin Code </label>
-            <input type="text" name="pincode" id="pincode" ng-model="jobApplication.pincode" ng-required="true" />
-            <div class="error" id="pincode-error" ng-show="jobForm.pincode.$touched && jobForm.pincode.$invalid">
-                {{ getError(jobForm.pincode, [{name:'isEmpty'}]) }}
+            <input type="text" name="pincode" id="pincode" ng-model="jobApplication.pincode" required />
+            </div>
+             <div class="error" id="pincode-error" ng-show="jobForm.pincode.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.pincode.$error.required">Pincode is required</span>
             </div>
         </div>
     </fieldset>
@@ -97,7 +103,7 @@
         <legend class="sub-title">Educational Details</legend>
         <div>
             <label for="qualification">Select qualification</label>
-            <select id="qualification" name="qualification" ng-model="jobApplication.qualification" ng-required="true">
+            <select id="qualification" name="qualification" ng-model="jobApplication.qualification" required>
                 <option selected disabled value="">Education</option>
                 <option value="10">10th passed</option>
                 <option value="12">12th Passed</option>
@@ -105,64 +111,88 @@
                 <option value="postGraduation">Post-Graduation</option>
             </select>
             <div class="error" id="qualification-error"
-                ng-show="jobForm.qualification.$touched && jobForm.qualification.$invalid">
-                {{ getError(jobForm.qualification, [{name:'isEmpty'}]) }}
+                ng-show="jobForm.qualification.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.qualification.$error.required">Qualification is required</span>
             </div>
         </div>
         <div>
             <span>Field Of Study </span>
             <label for="arts">
-                <input type="radio" name="fieldofstudy" value="arts" id="arts" ng-model="jobApplication.fieldofstudy" ng-required="true">Arts
+                <input type="radio" name="fieldofstudy" value="arts" id="arts" ng-model="jobApplication.fieldofstudy"
+                    required>Arts
             </label>
             <label for="commerce">
-                <input type="radio" name="fieldofstudy" value="commerce" id="commerce" ng-model="jobApplication.fieldofstudy" ng-required="true">Commerce
+                <input type="radio" name="fieldofstudy" value="commerce" id="commerce"
+                    ng-model="jobApplication.fieldofstudy" required>Commerce
             </label>
             <label for="science">
-                <input type="radio" name="fieldofstudy" value="science" id="science" ng-model="jobApplication.fieldofstudy" ng-required="true">Science
+                <input type="radio" name="fieldofstudy" value="science" id="science"
+                    ng-model="jobApplication.fieldofstudy" required>Science
             </label>
             <div class="error" id="fieldofstudy-error"
-                ng-show="jobForm.fieldofstudy.$touched && jobForm.fieldofstudy.$invalid">
-                {{ getCheckError('fieldofstudy', [{name:'isEmpty'}]) }}
+                ng-show="jobForm.fieldofstudy.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.fieldofstudy.$error.required">Field OF Study is required</span>
             </div>
         </div>
         <div>
             <label for="university-institution-name">University/Institution Name </label>
-            <input type="text" name="universityinstitutionname" id="university-institution-name" ng-model="jobApplication.universityinstitutionname" ng-required="true" ng-minLength="3"/>
+            <input type="text" name="universityinstitutionname" id="university-institution-name"
+                ng-model="jobApplication.universityinstitutionname" required ng-minLength="3" />
             <div class="error" id="universityinstitutionname-error"
-                ng-show="jobForm.universityinstitutionname.$touched && jobForm.universityinstitutionname.$invalid">
-                {{ getError(jobForm.universityinstitutionname, [{name:'isEmpty'}],{name:'minLength', length:3}) }}
-        </div>
+                ng-show="jobForm.universityinstitutionname.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.universityinstitutionname.$error.required">University Name is required</span>
+                <span ng-show="jobForm.universityinstitutionname.$error.minlength">University Name must be at least 3 characters </span>
+            </div>
     </fieldset>
 
-    <fieldset>
+     <fieldset>
         <legend class="sub-title">Work Experience</legend>
         <input type="hidden" id="ExperienceOpen" value="false" />
         <div>
-            <input type="radio" name="experience" id="fresher" checked> Fresher
-            <input type="radio" name="experience" id="experienced"> Experience
+            <input type="radio" value="fresher" name="experience" id="fresher" ng-model="jobApplication.experience"
+                required> Fresher
+            <input type="radio" value="experienced" name="experience" id="experienced"
+                ng-model="jobApplication.experience" required> Experience
         </div>
-        <div class="error" id="experience-error"></div>
-        <div class="hidden-experience" id="hidden-experience">
+        <div class="error" id="experience-error" ng-show="jobForm.experience.$touched || jobForm.$submitted && jobForm.experience.$invalid">
+        </div>
+        <div ng-show="jobApplication.experience == 'experienced'" class="hidden-experience" id="hidden-experience">
             <div>
 
                 <label for="job-experience-year">Work Experience in Year</label>
-                <input type="number" name="experienceyear" id="job-experience-year" />
-                <div class="error" id="experienceyear-error"></div>
+                <input type="number" name="experienceyear" id="job-experience-year"
+                    ng-model="jobApplication.experienceyear"
+                    ng-required="jobApplication.experience == 'experienced'" />
+                <div class="error" id="experienceyear-error" ng-show="jobForm.experienceyear.$touched || jobForm.$submitted">
+                    <span ng-show="jobForm.experienceyear.$error.required">Work Experience is required</span>
+                </div>
             </div>
             <div>
                 <label for="job-previous">Previous Job Titles </label>
-                <input type="text" id="job-previous" name="previousjob" placeholder="job title" />
-                <div class="error" id="previousjob-error"></div>
+                <input type="text" id="job-previous" name="previousjob" placeholder="job title"
+                     ng-model="jobApplication.previousjob"
+                    ng-required="jobApplication.experience === 'experienced'" />
+                <div class="error" id="previousjob-error" ng-show="jobForm.previousjob.$touched || jobForm.$submitted">
+                    <span ng-show="jobForm.previousjob.$error.required">Previous Job Name is required</span>
+                </div>
             </div>
             <div>
                 <label for="job-company">Previous Company Name </label>
-                <input type="text" id="job-company" name="company" placeholder="company name" />
-                <div class="error" id="company-error"></div>
+                <input type="text" id="job-company" name="company" placeholder="company name"
+                 ng-model="jobApplication.company"
+                    ng-required="jobApplication.experience === 'experienced'" />
+                <div class="error" id="company-error" ng-show="jobForm.company.$touched || jobForm.$submitted">
+                    <span ng-show="jobForm.company.$error.required">Company is required</span>
+                </div>
             </div>
             <div>
                 <label for="job-Previous-salary">Previous Salary </label>
-                <input type="text" name="previoussalary" id="job-previous-salary" placeholder="previous salary" />
-                <div class="error" id="previoussalary-error"></div>
+                <input type="text" name="previoussalary" id="job-previous-salary" placeholder="previous salary"
+                    ng-model="jobApplication.previoussalary"
+                    ng-required="jobApplication.experience === 'experienced'" />
+                <div class="error" id="previoussalary-error" ng-show="jobForm.previoussalary.$touched || jobForm.$submitted">
+                    <span ng-show="jobForm.previoussalary.$error.required">Previous Salary is required</span>
+                </div>
             </div>
             <div class="multi-value">
                 <span>Relevant Skill</span>
@@ -182,47 +212,51 @@
             </div>
         </div>
     </fieldset>
-
     <fieldset>
         <legend class="sub-title">Job-Related Details</legend>
         <div>
             <label for="job-position">Position Applying For </label>
-            <select name="jobposition" id="job-position"  ng-model="jobApplication.jobposition" ng-required="true">
+            <select name="jobposition" id="job-position" ng-model="jobApplication.jobposition" required>
                 <option selected disabled value="">Position</option>
                 <option value="preojectmanager">Preoject Manager</option>
                 <option value="businessanalyst">Business Analyst</option>
                 <option value="marketingmanager">Marketing Manager</option>
                 <option value="seniordeveloper">Senior Developer</option>
             </select>
-            <div class="error" id="jobposition-error" ng-show="jobForm.jobposition.$touched && jobForm.jobposition.$invalid">
-                {{ getError(jobForm.jobposition, [{name:'isEmpty'}]) }}
+            <div class="error" id="jobposition-error"
+                ng-show="jobForm.jobposition.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.jobposition.$error.required">Job Position is required</span>
             </div>
         </div>
         <div>
             <label for="job-location">Preferred Location </label>
-            <select name="joblocation" id="job-location" ng-model="jobApplication.joblocation" ng-required="true">
+            <select name="joblocation" id="job-location" ng-model="jobApplication.joblocation" required>
                 <option selected disabled value="">Location</option>
                 <option value="ahmedabad">Ahmedabad</option>
                 <option value="pune">Pune</option>
                 <option value="delhi">Delhi</option>
                 <option value="mumbai">Mumbai</option>
             </select>
-            <div class="error" id="joblocation-error" ng-show="jobForm.joblocation.$touched && jobForm.joblocation.$invalid">
-                {{ getError(jobForm.joblocation, [{name:'isEmpty'}]) }}
+            <div class="error" id="joblocation-error"
+                ng-show="jobForm.joblocation.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.joblocation.$error.required">Job Location is required</span>
             </div>
         </div>
         <div>
             <label for="start-date">Available Start Date : </label>
-            <input type="date" name="startdate" id="start-date" ng-model="jobApplication.startdate" ng-required="true"/>
-            <div class="error" id="startdate-error" ng-show="jobForm.startdate.$touched && jobForm.startdate.$invalid">
-                {{ getError(jobForm.startdate, [{name:'isEmpty'}]) }}
+            <input type="date" name="startdate" id="start-date" ng-model="jobApplication.startdate"
+                required />
+            <div class="error" id="startdate-error" ng-show="jobForm.startdate.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.startdate.$error.required">Available Start Date is required</span>
             </div>
         </div>
         <div>
             <label for="job-expected-salary">Expected Salary : </label>
-            <input type="text" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000" ng-model="jobApplication.jobexpectedsalary" ng-required="true"/>
-            <div class="error" id="jobexpectedsalary-error" ng-show="jobForm.jobexpectedsalary.$touched && jobForm.jobexpectedsalary.$invalid">
-                {{ getError(jobForm.jobexpectedsalary, [{name:'isEmpty'}]) }}
+            <input type="text" name="jobexpectedsalary" id="job-expected-salary" min="0" placeholder="10000"
+                ng-model="jobApplication.jobexpectedsalary" required />
+            <div class="error" id="jobexpectedsalary-error"
+                ng-show="jobForm.jobexpectedsalary.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.jobexpectedsalary.$error.required">Exprected Salary is required</span>
             </div>
         </div>
     </fieldset>
@@ -231,20 +265,25 @@
         <legend class="sub-title">Upload Documents</legend>
         <div>
             <label for="resume">Upload Resume (PDF only) </label>
-            <input type="file" id="resume" name="resume" accept=".pdf">
-            <div class="error" id="resume-error"></div>
+            <input type="file" id="resume" name="resume" accept=".pdf" ng-model="jobApplication.resume" file-model required>
+            <div class="error" id="resume-error" ng-show="jobForm.resume.$touched || jobForm.$submitted">
+                <span ng-show="jobForm.resume.$error.required">Resume is required</span>
+            </div>
         </div>
         <div>
             <label for="photo">Upload Passport Size Photo </label>
-            <input type="file" id="photo" name="photo" accept="image/*">
-            <div class="error" id="photo-error"></div>
+            <input type="file" id="photo" name="photo" accept="image/*" ng-model="jobApplication.photo" file-model required>
+            <div class="error" id="photo-error" ng-show="jobForm.photo.$touched || jobForm.$submitted">
+                 <span ng-show="jobForm.photo.$error.required">Photo is required</span>
+            </div>
         </div>
     </fieldset>
     <div class="btn-handler">
         <div>
             <input type="submit" value="submit" class="success-button" >
-            <input type="reset" value="reset" class="danger-button">
+            <input type="reset" value="reset" class="danger-button" ng-click="resetForm(jobForm)">
         </div>
         <a style="text-align:center" lass="form-link" href="#!/">Home</a>
     </div>
 </form>
+<div class="toast-container" id="toastContainer"></div>

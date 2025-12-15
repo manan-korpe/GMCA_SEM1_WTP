@@ -1,0 +1,35 @@
+<table width="100%" bgColor="orange">
+    <tr align="center">
+        <td width="20%" class="imgset">
+            <div>
+                <a href="#!login">
+                    <img ng-src="{{college}}" alt="Image" width="100%">
+                </a>
+            </div>
+            <div ng-repeat="user in users">
+                <a ng-href="{{ isAuthorized ? '#!/profile' : '#!/login' }}">
+                    <img ng-src="{{user}}" alt="Image" width="100%">
+                </a>
+            </div>
+
+        </td>
+        <td width="80%" align="center">
+            <h1 bgColor="orange">Welcome to Government MCA College, Maninagar</h1>
+            <h3>GROUP NO : 17</h3>
+
+        </td>
+    </tr>
+</table>
+<table width="100%" bgColor="grey">
+    <tr align="center">
+        <td>
+            <p><a href="#">Home</a> | <a href="#!/about">About Us</a> | <a href="#">Services</a> | <a
+                    href="#">Contact</a>
+                <span ng-if="isAuthorized">| <a href="#!/jobApplication">Jobs</a></span>
+                <span ng-if="isAuthorized">| <a href="#!/calculator">Calculator</a></span>
+                <span ng-if="isAuthorized">| <a href="" ng-click="logout()">Logout</a></span>
+                <span ng-if="!isAuthorized">| <a href="#!/login" ng-if="!isAuthorized">Login</a></span>
+            </p>
+        </td>
+    </tr>
+</table>

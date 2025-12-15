@@ -1,0 +1,28 @@
+<header ng-include="'view/component/header.html'"></header>
+<div class="profile-container">
+    <form class="profile-card" >
+        <h2>Profile</h2>
+
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Enter first name" ng-model="user.firstname">
+        </div>
+
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Enter last name" ng-model="user.lastname">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter email" ng-model="user.email">
+        </div>
+
+        <div class="btn-group">
+            <button type="submit" class="save-btn">Save</button>
+            <button type="reset" class="cancel-btn">Cancel</button>
+        </div>
+        
+    </form>
+</div>
+<header ng-include="'view/component/footer.html'"></header>
