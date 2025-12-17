@@ -14,7 +14,7 @@
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="password" ng-model="user.password"
-                        ng-required="true" ng-minlength="6" />
+                        ng-required="true" />
                     <div class="error" ng-show="registerform.password.$touched && registerform.password.$invalid">
                         {{getPasswordError()}}
                     </div>
@@ -23,7 +23,8 @@
             <button type="submit" class="btn" ng-disabled="registerform.$invalid">Login</button>
 
             <p class="register-text">
-                Don’t have an account? <a href="#!/register">Register</a>
+                Don’t have an account? <a href="#!/register">Register</a></br>
+                <center><a href="#!/">Home</a></center>
             </p>
         </form>
     </div>
@@ -37,4 +38,3 @@
         <div class="shape shape-f"></div>
     </div>
 </div>
-<div class="toast-container" id="toastContainer"></div>

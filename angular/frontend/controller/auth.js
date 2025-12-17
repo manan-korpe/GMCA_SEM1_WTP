@@ -61,13 +61,11 @@ app.controller("loginController", function ($scope, $rootScope, $http, $location
     }
 
     $scope.submitLogin = function (form) {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
         if (form.$invalid) {
             ToastService.show("error", "Please fix validation errors.");
             return;
         } else {
-            let user = users.find((val)=>val.email==$scope.user.email && val.password == $scope.user.password); 
+            let user = $rootScope.users.find((val)=>val.email==$scope.user.email && val.password == $scope.user.password); 
             if (user) {
                 sessionStorage.setItem('user', JSON.stringify(user)); //session storage
                 $rootScope.isAuthorized =true;
@@ -120,32 +118,13 @@ app.controller("registerController", function ($scope, $http, $location, $timeou
         users = [...users,$scope.user];
         localStorage.setItem("users",JSON.stringify(users));
         ToastService.show("success", "registraion successfll");
-        $scope.user = {};
+        form.$setPristine();
+        form.$setUntouched();
+        // $scope.user = {};
         $timeout(() => {
             $location.path("/login");
         }, 2000);
 
-        // $http({
-        //     method: 'POST',
-        //     url: '../backend/register.php',
-        //     data: $scope.user,
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(function (response) {
-        //     if (response.data.success) {
-        //         ToastService.show("success", response.data.message);
-        //         $scope.user = {}; // clear form
-        //         form.$setPristine();
-        //         form.$setUntouched();
-        //         $timeout(() => {
-        //             $location.path("/login");
-        //         }, 3000);
-        //     } else {
-        //         ToastService.show("error", response.data.message);
-        //     }
-        // }, function (error) {
-        //     ToastService.show("error", "Server error.");
-        // });
+        
     };
 });

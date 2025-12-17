@@ -2,15 +2,25 @@
     <tr align="center">
         <td width="20%" class="imgset">
             <div>
-                <a href="#!login">
+                <a ng-href="#!/">
                     <img ng-src="{{college}}" alt="Image" width="100%">
                 </a>
+
             </div>
-            <div ng-repeat="user in users">
-                <a ng-href="{{ isAuthorized ? '#!/profile' : '#!/login' }}">
-                    <img ng-src="{{user}}" alt="Image" width="100%">
+
+            <div ng-repeat="u in users">
+
+                <a ng-show="isAuthorized && user.email === u.email" ng-href="#!/profile">
+                    <img ng-src="{{u.img}}" alt="Image" width="100%">
                 </a>
+
+                <div ng-show="user.email != u.email" ng-click="submitLogin(u)" style="cursor:pointer">
+                    <img ng-src="{{u.img}}" alt="Image" width="100%">
+                </div>
+
             </div>
+
+
 
         </td>
         <td width="80%" align="center">
@@ -28,8 +38,8 @@
                 <span ng-if="isAuthorized">| <a href="#!/jobApplication">Jobs</a></span>
                 <span ng-if="isAuthorized">| <a href="#!/calculator">Calculator</a></span>
                 <span ng-if="isAuthorized">| <a href="" ng-click="logout()">Logout</a></span>
-                <span ng-if="!isAuthorized">| <a href="#!/login" ng-if="!isAuthorized">Login</a></span>
             </p>
         </td>
     </tr>
 </table>
+<div class="toast-container" id="toastContainer"></div>

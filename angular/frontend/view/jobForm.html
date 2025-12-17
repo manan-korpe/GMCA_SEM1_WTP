@@ -22,7 +22,7 @@
 
         <div>
             <label for="dob">DOB </label>
-            <input type="date" id="dob" name="dob" max="2025-09-26" ng-model="jobApplication.dob" required />
+            <input type="date" id="dob" name="dob" max="{{maxAgeDate}}" ng-model="jobApplication.dob" required />
             <div class="error" ng-show="jobForm.dob.$touched || jobForm.$submitted">
                 <span ng-show="jobForm.dob.$error.required">Date of Birth is required</span>
             </div>
@@ -244,7 +244,7 @@
         </div>
         <div>
             <label for="start-date">Available Start Date : </label>
-            <input type="date" name="startdate" id="start-date" ng-model="jobApplication.startdate"
+            <input type="date" name="startdate" id="start-date" min="{{currentDate}}" ng-model="jobApplication.startdate"
                 required />
             <div class="error" id="startdate-error" ng-show="jobForm.startdate.$touched || jobForm.$submitted">
                 <span ng-show="jobForm.startdate.$error.required">Available Start Date is required</span>
@@ -286,4 +286,3 @@
         <a style="text-align:center" lass="form-link" href="#!/">Home</a>
     </div>
 </form>
-<div class="toast-container" id="toastContainer"></div>

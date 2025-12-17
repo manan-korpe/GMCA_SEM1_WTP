@@ -7,74 +7,101 @@
     letter-spacing: .8px;
 }
 
-body {
+* {
+    box-sizing: border-box;
+}
+
+main {
     font-family: Arial, sans-serif;
-    width:100vw;
-    height:100vh;
+    width: 100%;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 1rem;
     color: #333;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: rgb(241, 182, 72);
 }
 
-.container{
-    padding:1rem;
+/* Calculator container */
+.container {
+    width: 100%;
+    max-width: 360px;
+    padding: 1rem;
     box-shadow: 0px 0px 8px var(--light-black);
-    border-radius: 4px;
+    border-radius: 6px;
     background-color: white;
 }
-input{
-    text-align:end;
+
+/* Display */
+input {
+    width: 100%;
+    text-align: end;
     letter-spacing: 1px;
     margin-bottom: 12px;
-    padding: 8px;
-    font-size: 2rem;
-    border:none;
-    box-shadow: 0px 2px 2px var(--light-black) ;
+    padding: 0.75rem;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    border: none;
+    box-shadow: 0px 2px 2px var(--light-black);
 }
-.input:focus{
-    outline: 0;
+
+input:focus {
+    outline: none;
 }
-table{
-    font-size: 2rem;
+
+/* Calculator table */
+.calculator {
     width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
 }
-td{
+
+/* Buttons */
+.calculator td {
     background-color: var(--secondary);
-    text-align:center;
-    margin:40px;
-    padding:1.5rem;
-    border:2px solid white;
-    border-radius: 8px;
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid white;
+    border-radius: 10px;
     cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
-td:hover{
+
+/* Hover / active */
+.calculator td:hover {
     background-color: var(--secondary-dark);
 }
-.special-char{
+
+.calculator td:active {
+    transform: scale(0.96);
+}
+
+/* Operator buttons */
+.special-char {
     background-color: orange;
     color: white;
 }
-.special-char:hover{
+
+.special-char:hover {
     background-color: var(--primary-dark);
 }
 
-.redire-btn{
-    position:absolute;
-    top:25px;
-    right:25px;
-    text-decoration:none;
-    background-color: green;
-    color:white;
-    font-weight:500;
-    padding:6px 12px;
-    border-radius: 6px;
+/* 📱 Mobile screens */
+@media (max-width: 480px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .calculator td {
+        padding: 0.8rem;
+    }
 }
 
-.redire-btn:hover{
-    background-color: rgb(1, 112, 1);
+/* 💻 Large screens */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 400px;
+    }
 }
