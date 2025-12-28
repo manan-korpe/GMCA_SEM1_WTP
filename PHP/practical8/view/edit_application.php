@@ -274,27 +274,25 @@ $row = $result->fetch_assoc();
     <fieldset>
         <legend class="sub-title">Upload Documents</legend>
 
-       <div>
-    <label>Current Resume</label><br>
-    <a href="../model/<?= $row['resume']; ?>" target="_blank">View Current Resume</a><br><br>
+        <div>
+        <label>Current Resume</label><br>
+        <a href="../model/<?= $row['resume']; ?>" target="_blank">View Current Resume</a><br><br>
 
-    <label>Upload new Resume (optional):</label>
-    <input type="file"  id="resume" name="resume" accept=".pdf">
-    <input type="hidden" name="old_resume" id="old_resume" value="<?= $row['resume']; ?>">
-    <div class="error" id="resume-error"></div>
-</div>
+        <label>Upload new Resume (optional):</label>
+        <input type="file"  id="resume" name="resume" accept=".pdf">
+        <input type="hidden" name="old_resume" id="old_resume" value="<?= $row['resume']; ?>">
+        <div class="error" id="resume-error"></div>
+        </div>
 
-<div>
-    <label>Current Photo</label><br>
-    <img src="../model/<?= $row['photo']; ?>" width="120"><br><br>
+        <div>
+            <label>Current Photo</label><br>
+            <img src="../model/<?= $row['photo']; ?>" width="120"><br><br>
 
-    <label>Upload new Photo (optional):</label>
-    <input type="file" id="photo" name="photo" accept="image/*">
-    <input type="hidden" name="old_photo" id="old_photo" value="<?= $row['photo']; ?>">
-    <div class="error" id="photo-error"></div>
-</div>
-
-
+            <label>Upload new Photo (optional):</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <input type="hidden" name="old_photo" id="old_photo" value="<?= $row['photo']; ?>">
+            <div class="error" id="photo-error"></div>
+        </div>
     </fieldset>
 
     <div class="btn-handler">

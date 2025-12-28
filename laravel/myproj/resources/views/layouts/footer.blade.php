@@ -1,0 +1,9 @@
+ <table class="header">
+        <tr>
+            <td width="100%" bgcolor="green" align="center" valign="bottom">
+
+                <p>&copy; 2025 Government MCA College, Maninagar. All
+                    Rights Reserved.</p>
+            </td>
+        </tr>
+    </table>

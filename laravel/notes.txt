@@ -1,0 +1,3 @@
+create project : composer create-project laravel/laravel [project_name]
+run project : php artisan serve
+migration : php artisan make:migration create_login_table --create=login

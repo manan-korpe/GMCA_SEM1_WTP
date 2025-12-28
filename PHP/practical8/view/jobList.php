@@ -114,7 +114,6 @@ $result = $stmt->get_result();
         <h2>Applicant Details</h2>
 
         <div class="modal-body">
-
             <!-- PERSONAL DETAILS -->
             <h3 class="section-title">Personal Details</h3>
             <div class="section-grid">
@@ -180,7 +179,6 @@ $result = $stmt->get_result();
     </div>
 </div>
 
-
     <?php
         require "../model/util/toast.php";
     ?>
@@ -236,7 +234,6 @@ function showDetails(
     previoussalary, skills, jobposition, joblocation, startdate,
     expectedsalary, resume, photo
 ) {
-
     document.getElementById("d_id").innerText = id;
     document.getElementById("d_name").innerText = fname + " " + lname;
     document.getElementById("d_dob").innerText = dob;
