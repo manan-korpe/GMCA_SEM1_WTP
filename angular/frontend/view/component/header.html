@@ -11,7 +11,7 @@
             <div ng-repeat="u in users">
 
                 <a ng-show="isAuthorized && user.email === u.email" ng-href="#!/profile">
-                    <img ng-src="{{u.img}}" alt="Image" width="100%">
+                    <img ng-src="{{u.img}}" alt="Image" width="100%" style="border-color:green">
                 </a>
 
                 <div ng-show="user.email != u.email" ng-click="submitLogin(u)" style="cursor:pointer">
@@ -37,7 +37,7 @@
                     href="#">Contact</a>
                 <span ng-if="isAuthorized">| <a href="#!/jobApplication">Jobs</a></span>
                 <span ng-if="isAuthorized">| <a href="#!/calculator">Calculator</a></span>
-                <span ng-if="isAuthorized">| <a href="" ng-click="logout()">Logout</a></span>
+                <span ng-if="isAuthorized">| <a href="" ng-click="logout()">Logout : [ {{user.firstname}} ]</a></span>
             </p>
         </td>
     </tr>
