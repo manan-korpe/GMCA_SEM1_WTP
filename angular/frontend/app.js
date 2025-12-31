@@ -81,7 +81,6 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "view/home.html",
-            controller: "homeController",
             css: ["css/home.css"],
         })
         .when("/about", {
@@ -90,17 +89,14 @@ app.config(function ($routeProvider) {
         })
         .when("/profile", {
             templateUrl: "view/profile.html",
-            controller: "profileController",
             css: ["css/profile.css"],
         })
         .when("/login", {
             templateUrl: "view/login.html",
-            controller: "loginController",
             css: ["css/loginAndRegister.css"]
         })
         .when("/register", {
             templateUrl: "view/register.html",
-            controller: "registerController",
             css: ["css/loginAndRegister.css"]
         })
         .when("/jobApplication", {
