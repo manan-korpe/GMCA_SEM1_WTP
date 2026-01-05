@@ -52,7 +52,6 @@ table {
 
 td {
   padding: 15px;
-  vertical-align: top;
 }
 
 td[width="300"],
@@ -90,46 +89,6 @@ td[bgcolor="green"] {
   text-align: center;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-  h1 {
-    font-size: 1.5em;
-  }
-
-  td {
-    padding: 10px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  tr {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  td {
-    width: 100% !important;
-  }
-
-  td[width="300"],
-  td[width="200"] {
-    background-color: #f9f9f9;
-  }
-
-  form {
-    width: 100%;
-    max-width: none;
-  }
-
-  img {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 1.3em;
-  }
+.group-img td{
+  padding: 0;
 }

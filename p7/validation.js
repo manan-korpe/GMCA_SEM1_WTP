@@ -11,12 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
     experience.addEventListener("change", toggleExperience);
     fresher.addEventListener("change", toggleExperience);
 
-    // Date limit
     const todayDate = new Date().toISOString().split("T")[0];
     document.getElementById("start-date").min = todayDate;
     document.getElementById("dob").max = todayDate;
 
-    // helper function 1 for validation 
     function attachCommonListeners(input, errorDiv, isTouchedObj, extraValidation = null) {
         input.addEventListener("input", (e) => {
             if (extraValidation) extraValidation(e);
@@ -39,7 +37,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const form = document.getElementById("applicationForm");
-    // null and char validation
     const fieldSet1 = [
         "fname",
         "lname",
@@ -57,7 +54,6 @@ window.addEventListener("DOMContentLoaded", () => {
         attachCommonListeners(input, errorDiv, isTouchedObj, isValidInputChar);
     });
 
-    // only null validaiton
     const fieldSet2 = [
         "dob",
         "startdate",
@@ -76,8 +72,6 @@ window.addEventListener("DOMContentLoaded", () => {
         attachCommonListeners(input, errorDiv, isTouchedObj);
     });
 
-
-    // null and number validation
     const fieldSet3 = [
         "mobile",
         "jobexpectedsalary",
@@ -92,7 +86,6 @@ window.addEventListener("DOMContentLoaded", () => {
         attachCommonListeners(input, errorDiv, isTouchedObj, isValidInputNumber);
     });
 
-    // radio button and check box validation
     const fieldSet4 = [
         "gender",
         "marital",
@@ -128,10 +121,8 @@ window.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
-
 });
 
-// helper function for run time validation 
 function isValidInputChar(e) {
     e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
 }
@@ -141,7 +132,6 @@ function isValidInputNumber(e) {
     e.target.value = cleaned.substring(0, 10);
 }
 
-// helper function and object for submit form
 function createValidator() {
     return {
         value: "",
@@ -198,7 +188,6 @@ function createValidator() {
     };
 }
 
-//form submit handler
 function handleForm(e) {
     e.preventDefault();
     const toast = document.getElementById("toast");
@@ -222,7 +211,6 @@ function handleForm(e) {
         { name: "previousjob", rules: ["isEmpty"] },
         { name: "company", rules: ["isEmpty"] },
         { name: "previoussalary", rules: ["isEmpty"] },
-        // { name: "skill", rules: ["isEmpty"] },
         { name: "jobposition", rules: ["isEmpty"] },
         { name: "joblocation", rules: ["isEmpty"] },
         { name: "startdate", rules: ["isEmpty"] },
